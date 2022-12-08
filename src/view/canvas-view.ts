@@ -1,8 +1,5 @@
 // types
 import { Brick } from "../sprites/brick";
-import { Paddle } from "../sprites/paddle";
-import { Ball } from "~/sprites/ball";
-
 export class CanvasView {
   canvas: HTMLCanvasElement;
   private context: CanvasRenderingContext2D | null;
@@ -35,7 +32,7 @@ export class CanvasView {
     if (this.info) this.info.innerHTML = text;
   }
 
-  drawSprite(brick: Brick | Paddle | Ball): void {
+  drawSprite(brick: Brick): void {
     if (!brick) return;
 
     this.context?.drawImage(
@@ -48,7 +45,6 @@ export class CanvasView {
   }
 
   drawBricks(bricks: Brick[]): void {
-    bricks.map(brick => this.drawSprite(brick));
+    bricks.forEach(brick => this.drawSprite(brick));
   }
-
 }
